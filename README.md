@@ -487,9 +487,4 @@ eksctl delete cluster \
   --name patient-cluster \
   --region us-east-2
 
-# Estimated costs while running:
-# EKS Control Plane: $0.10/hour
-# Fargate pods:      ~$0.10/hour
-# NAT Gateway:       ~$0.05/hour
-# Total:             ~$0.25/hour
 \`\`\`
