@@ -382,3 +382,50 @@ DevSecOps Engineer
 
 > This project bridges my dual background in healthcare and cloud engineering,
 > demonstrating how modern DevSecOps practices apply to real-world healthcare systems.
+
+## 🔄 GitOps with ArgoCD
+
+ArgoCD watches this GitHub repo and automatically deploys changes to EKS.
+
+### How it works
+\`\`\`
+git push → ArgoCD detects → Auto deploys to EKS → Zero downtime
+\`\`\`
+
+### Access ArgoCD
+\`\`\`bash
+kubectl port-forward svc/argocd-server -n argocd 8888:443
+open https://localhost:8888
+\`\`\`
+
+### Deploy ArgoCD Application
+\`\`\`bash
+kubectl apply -f argocd/application.yaml
+\`\`\`
+
+## ☸️ Kubernetes on EKS + Fargate
+
+### Deploy with kubectl
+\`\`\`bash
+kubectl apply -f k8s/
+\`\`\`
+
+### Deploy with Helm
+\`\`\`bash
+helm install patient-system helm/patient-system --namespace patient-system
+\`\`\`
+
+### Useful kubectl commands
+\`\`\`bash
+kubectl get pods -n patient-system
+kubectl get svc -n patient-system
+kubectl logs -n patient-system deployment/patient-app
+kubectl port-forward -n patient-system svc/patient-service 9090:80
+\`\`\`
+
+### Helm commands
+\`\`\`bash
+helm list -n patient-system
+helm history patient-system -n patient-system
+helm rollback patient-system 1 -n patient-system
+\`\`\`
