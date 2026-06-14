@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: patient-config
+  namespace: patient-system
+data:
+  DB_HOST: postgres-service
+  DB_NAME: patientdb
+  DB_USER: admin
+  AUTH_SERVICE_URL: http://auth-service:4000
