@@ -1,0 +1,14 @@
+apiVersion: v2
+name: patient-system
+description: Patient Management System - Microservices on Kubernetes
+type: application
+version: 1.0.0
+appVersion: "1.0.0"
+maintainers:
+  - name: George Awa
+    email: desbain@github.com
+keywords:
+  - healthcare
+  - patient-management
+  - microservices
+  - kubernetes

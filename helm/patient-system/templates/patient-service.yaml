@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: patient-service
+  namespace: {{ .Values.namespace }}
+spec:
+  selector:
+    app: {{ .Values.patientApp.name }}
+  ports:
+    - port: {{ .Values.patientApp.service.port }}
+      targetPort: {{ .Values.patientApp.service.targetPort }}
+  type: {{ .Values.patientApp.service.type }}

@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.patientApp.name }}
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: {{ .Values.patientApp.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.patientApp.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.patientApp.name }}
+    spec:
+      containers:
+        - name: {{ .Values.patientApp.name }}
+          image: "{{ .Values.patientApp.image.repository }}:{{ .Values.patientApp.image.tag }}"
+          imagePullPolicy: {{ .Values.patientApp.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.patientApp.port }}
+          env:
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: patient-config
+                  key: DB_HOST
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: patient-config
+                  key: DB_NAME
+            - name: DB_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: patient-config
+                  key: DB_USER
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: patient-secret
+                  key: DB_PASSWORD
+            - name: AUTH_SERVICE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: patient-config
+                  key: AUTH_SERVICE_URL

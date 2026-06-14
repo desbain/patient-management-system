@@ -1,0 +1,54 @@
+# Global settings
+namespace: patient-system
+
+# Patient App
+patientApp:
+  name: patient-app
+  image:
+    repository: gewa11281/patient-app
+    tag: latest
+    pullPolicy: Always
+  replicas: 2
+  port: 3000
+  service:
+    type: LoadBalancer
+    port: 80
+    targetPort: 3000
+
+# Auth Service
+authService:
+  name: auth-service
+  image:
+    repository: gewa11281/auth-service
+    tag: latest
+    pullPolicy: Always
+  replicas: 2
+  port: 4000
+  service:
+    type: ClusterIP
+    port: 4000
+    targetPort: 4000
+
+# PostgreSQL
+postgres:
+  name: postgres
+  image:
+    repository: postgres
+    tag: 15-alpine
+    pullPolicy: IfNotPresent
+  replicas: 1
+  port: 5432
+  service:
+    type: ClusterIP
+    port: 5432
+    targetPort: 5432
+
+# Database credentials
+database:
+  name: patientdb
+  user: admin
+  password: secret123
+
+# JWT Secret
+jwt:
+  secret: superSecretJWT2024PatientSystem

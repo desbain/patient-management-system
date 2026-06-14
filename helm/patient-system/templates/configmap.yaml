@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: patient-config
+  namespace: {{ .Values.namespace }}
+data:
+  DB_HOST: postgres-service
+  DB_NAME: {{ .Values.database.name }}
+  DB_USER: {{ .Values.database.user }}
+  AUTH_SERVICE_URL: http://auth-service:{{ .Values.authService.port }}
