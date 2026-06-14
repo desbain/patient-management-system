@@ -299,7 +299,7 @@ Deployed on AWS EC2 (Amazon Linux) with the following security group rules:
 ## 👨‍💻 Author
 
 **George Awa**
-DevSecOps Engineer | Registered Nurse (BSN, RN)
+DevSecOps Engineer 
 - GitHub: https://github.com/desbain
 - Website: https://desbain.com
 
