@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Patient Details</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <nav>
+    <div class="nav-brand">🏥 Patient Management System</div>
+    <a href="/" class="btn btn-secondary">← Back to Dashboard</a>
+  </nav>
+  <div class="container">
+    <div class="form-container">
+      <div class="patient-header">
+        <h2><%= patient.first_name %> <%= patient.last_name %></h2>
+        <span class="badge badge-<%= patient.status.toLowerCase() %>">
+          <%= patient.status %>
+        </span>
+      </div>
+      <div class="detail-grid">
+        <div class="detail-card">
+          <h3>Personal Information</h3>
+          <p><strong>ID:</strong> #<%= patient.id %></p>
+          <p><strong>Date of Birth:</strong> <%= new Date(patient.dob).toLocaleDateString() %></p>
+          <p><strong>Gender:</strong> <%= patient.gender %></p>
+          <p><strong>Admitted:</strong> <%= new Date(patient.admitted_date).toLocaleString() %></p>
+        </div>
+        <div class="detail-card">
+          <h3>Clinical Information</h3>
+          <p><strong>Diagnosis:</strong> <%= patient.diagnosis %></p>
+          <p><strong>Status:</strong> <%= patient.status %></p>
+        </div>
+        <div class="detail-card">
+          <h3>Vitals</h3>
+          <p><strong>Blood Pressure:</strong> <%= patient.blood_pressure %></p>
+          <p><strong>Heart Rate:</strong> <%= patient.heart_rate %> bpm</p>
+          <p><strong>Temperature:</strong> <%= patient.temperature %>°F</p>
+        </div>
+        <div class="detail-card full-width">
+          <h3>Clinical Notes</h3>
+          <p><%= patient.notes || 'No notes recorded.' %></p>
+        </div>
+      </div>
+      <div class="action-buttons">
+        <% if (patient.status !== 'Discharged') { %>
+          <form method="POST" action="/discharge/<%= patient.id %>">
+            <button class="btn btn-success">Discharge Patient</button>
+          </form>
+          <form method="POST" action="/critical/<%= patient.id %>">
+            <button class="btn btn-danger">Mark Critical</button>
+          </form>
+        <% } %>
+        <form method="POST" action="/delete/<%= patient.id %>"
+          onsubmit="return confirm('Delete this patient record?')">
+          <button class="btn btn-delete">Delete Record</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

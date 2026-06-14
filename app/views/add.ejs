@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Patient</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <nav>
+    <div class="nav-brand">🏥 Patient Management System</div>
+    <a href="/" class="btn btn-secondary">← Back to Dashboard</a>
+  </nav>
+  <div class="container">
+    <div class="form-container">
+      <h2>Add New Patient</h2>
+      <form method="POST" action="/add">
+        <div class="form-section">
+          <h3>Personal Information</h3>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>First Name *</label>
+              <input type="text" name="first_name" required />
+            </div>
+            <div class="form-group">
+              <label>Last Name *</label>
+              <input type="text" name="last_name" required />
+            </div>
+            <div class="form-group">
+              <label>Date of Birth *</label>
+              <input type="date" name="dob" required />
+            </div>
+            <div class="form-group">
+              <label>Gender</label>
+              <select name="gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="form-section">
+          <h3>Clinical Information</h3>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Diagnosis *</label>
+              <input type="text" name="diagnosis" required />
+            </div>
+            <div class="form-group">
+              <label>Status</label>
+              <select name="status">
+                <option value="Admitted">Admitted</option>
+                <option value="Critical">Critical</option>
+                <option value="Discharged">Discharged</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="form-section">
+          <h3>Vitals</h3>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Blood Pressure</label>
+              <input type="text" name="blood_pressure" placeholder="e.g. 120/80" />
+            </div>
+            <div class="form-group">
+              <label>Heart Rate (bpm)</label>
+              <input type="number" name="heart_rate" placeholder="e.g. 72" />
+            </div>
+            <div class="form-group">
+              <label>Temperature (°F)</label>
+              <input type="number" step="0.1" name="temperature" placeholder="e.g. 98.6" />
+            </div>
+          </div>
+        </div>
+        <div class="form-section">
+          <h3>Notes</h3>
+          <div class="form-group">
+            <label>Clinical Notes</label>
+            <textarea name="notes" rows="4" placeholder="Enter clinical notes..."></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-large">Save Patient Record</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

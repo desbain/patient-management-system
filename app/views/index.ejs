@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Management System</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <nav>
+    <div class="nav-brand">🏥 Patient Management System</div>
+    <a href="/add" class="btn btn-primary">+ Add Patient</a>
+  </nav>
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h3><%= stats.total %></h3>
+        <p>Total Patients</p>
+      </div>
+      <div class="stat-card admitted">
+        <h3><%= stats.admitted %></h3>
+        <p>Admitted</p>
+      </div>
+      <div class="stat-card critical">
+        <h3><%= stats.critical %></h3>
+        <p>Critical</p>
+      </div>
+      <div class="stat-card discharged">
+        <h3><%= stats.discharged %></h3>
+        <p>Discharged</p>
+      </div>
+    </div>
+    <div class="search-bar">
+      <form method="GET" action="/">
+        <input type="text" name="search" placeholder="Search by name or diagnosis..." value="<%= search %>"/>
+        <button type="submit" class="btn btn-primary">Search</button>
+        <% if (search) { %>
+          <a href="/" class="btn btn-secondary">Clear</a>
+        <% } %>
+      </form>
+    </div>
+    <div class="table-container">
+      <h2>Patient Records</h2>
+      <% if (patients.length === 0) { %>
+        <div class="empty-state">
+          <p>No patients found. <a href="/add">Add your first patient</a></p>
+        </div>
+      <% } else { %>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>DOB</th>
+            <th>Diagnosis</th>
+            <th>Vitals</th>
+            <th>Status</th>
+            <th>Admitted</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% patients.forEach(patient => { %>
+          <tr>
+            <td>#<%= patient.id %></td>
+            <td><strong><%= patient.first_name %> <%= patient.last_name %></strong></td>
+            <td><%= new Date(patient.dob).toLocaleDateString() %></td>
+            <td><%= patient.diagnosis %></td>
+            <td>
+              BP: <%= patient.blood_pressure %><br>
+              HR: <%= patient.heart_rate %> bpm<br>
+              Temp: <%= patient.temperature %>°F
+            </td>
+            <td>
+              <span class="badge badge-<%= patient.status.toLowerCase() %>">
+                <%= patient.status %>
+              </span>
+            </td>
+            <td><%= new Date(patient.admitted_date).toLocaleDateString() %></td>
+            <td>
+              <a href="/patient/<%= patient.id %>" class="btn btn-small">View</a>
+              <% if (patient.status !== 'Discharged') { %>
+                <form method="POST" action="/discharge/<%= patient.id %>" style="display:inline">
+                  <button class="btn btn-small btn-success">Discharge</button>
+                </form>
+                <form method="POST" action="/critical/<%= patient.id %>" style="display:inline">
+                  <button class="btn btn-small btn-danger">Critical</button>
+                </form>
+              <% } %>
+              <form method="POST" action="/delete/<%= patient.id %>" style="display:inline"
+                onsubmit="return confirm('Delete this patient record?')">
+                <button class="btn btn-small btn-delete">Delete</button>
+              </form>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <% } %>
+    </div>
+  </div>
+</body>
+</html>
