@@ -488,3 +488,20 @@ eksctl delete cluster \
   --region us-east-2
 
 \`\`\`
+
+## 📸 Screenshots
+
+### Patient Management System - Login
+![Login](screenshots/Screenshot%202026-06-14%20155125.png)
+
+### Patient Dashboard
+![Dashboard](screenshots/Screenshot%202026-06-14%20155232.png)
+
+### Docker Desktop - All Containers Running
+![Docker](screenshots/Screenshot%202026-06-14%20144556.png)
+
+### ArgoCD - Application Synced
+![ArgoCD](screenshots/Screenshot%202026-06-14%20160011.png)
+
+### ArgoCD - Deployment Tree
+![ArgoCD Tree](screenshots/Screenshot%202026-06-14%20155757.png)
