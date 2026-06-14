@@ -9,7 +9,12 @@
 <body>
   <nav>
     <div class="nav-brand">🏥 Patient Management System</div>
-    <a href="/add" class="btn btn-primary">+ Add Patient</a>
+    <div class="nav-user">
+      <span>👤 <%= currentUser.fullname %></span>
+      <span class="nav-role"><%= currentUser.role.toUpperCase() %></span>
+      <a href="/add" class="btn btn-primary">+ Add Patient</a>
+      <a href="/logout" class="btn btn-secondary">Logout</a>
+    </div>
   </nav>
   <div class="container">
     <div class="stats-grid">
@@ -56,6 +61,7 @@
             <th>Vitals</th>
             <th>Status</th>
             <th>Admitted</th>
+            <th>Added By</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -77,6 +83,7 @@
               </span>
             </td>
             <td><%= new Date(patient.admitted_date).toLocaleDateString() %></td>
+            <td><%= patient.created_by || 'N/A' %></td>
             <td>
               <a href="/patient/<%= patient.id %>" class="btn btn-small">View</a>
               <% if (patient.status !== 'Discharged') { %>
@@ -87,10 +94,12 @@
                   <button class="btn btn-small btn-danger">Critical</button>
                 </form>
               <% } %>
-              <form method="POST" action="/delete/<%= patient.id %>" style="display:inline"
-                onsubmit="return confirm('Delete this patient record?')">
-                <button class="btn btn-small btn-delete">Delete</button>
-              </form>
+              <% if (currentUser.role === 'admin') { %>
+                <form method="POST" action="/delete/<%= patient.id %>" style="display:inline"
+                  onsubmit="return confirm('Delete this patient record?')">
+                  <button class="btn btn-small btn-delete">Delete</button>
+                </form>
+              <% } %>
             </td>
           </tr>
           <% }) %>
