@@ -429,3 +429,67 @@ helm list -n patient-system
 helm history patient-system -n patient-system
 helm rollback patient-system 1 -n patient-system
 \`\`\`
+
+## ☸️ EKS + Fargate Setup
+
+\`\`\`bash
+# Create EKS cluster with Fargate
+eksctl create cluster \
+  --name patient-cluster \
+  --region us-east-2 \
+  --fargate \
+  --version 1.32
+
+# Update kubeconfig
+aws eks update-kubeconfig \
+  --name patient-cluster \
+  --region us-east-2
+
+# Create namespaces and Fargate profiles
+kubectl create namespace patient-system
+eksctl create fargateprofile \
+  --cluster patient-cluster \
+  --region us-east-2 \
+  --name fp-patient-system \
+  --namespace patient-system
+\`\`\`
+
+## 🔁 ArgoCD Installation on EKS
+
+\`\`\`bash
+# Create namespace and Fargate profile
+kubectl create namespace argocd
+eksctl create fargateprofile \
+  --cluster patient-cluster \
+  --region us-east-2 \
+  --name fp-argocd \
+  --namespace argocd
+
+# Install ArgoCD
+kubectl apply -n argocd \
+  -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+# Get admin password
+kubectl get secret argocd-initial-admin-secret \
+  -n argocd \
+  -o jsonpath="{.data.password}" | base64 -d
+
+# Access UI
+kubectl port-forward svc/argocd-server -n argocd 8888:443
+# Open https://localhost:8888
+\`\`\`
+
+## 💰 Cost Management
+
+\`\`\`bash
+# Delete cluster when done to avoid charges
+eksctl delete cluster \
+  --name patient-cluster \
+  --region us-east-2
+
+# Estimated costs while running:
+# EKS Control Plane: $0.10/hour
+# Fargate pods:      ~$0.10/hour
+# NAT Gateway:       ~$0.05/hour
+# Total:             ~$0.25/hour
+\`\`\`
