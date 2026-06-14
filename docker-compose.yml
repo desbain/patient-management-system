@@ -1,4 +1,19 @@
 services:
+  auth:
+    build: ./auth
+    container_name: auth_service
+    ports:
+      - "4000:4000"
+    environment:
+      DB_HOST: db
+      DB_USER: admin
+      DB_PASSWORD: secret123
+      DB_NAME: patientdb
+      JWT_SECRET: superSecretJWT2024PatientSystem
+    depends_on:
+      - db
+    restart: always
+
   app:
     build: ./app
     container_name: patient_app
@@ -9,9 +24,10 @@ services:
       DB_USER: admin
       DB_PASSWORD: secret123
       DB_NAME: patientdb
-      SESSION_SECRET: superSecretPatientSystem2024
+      AUTH_SERVICE_URL: http://auth:4000
     depends_on:
       - db
+      - auth
     restart: always
 
   db:
