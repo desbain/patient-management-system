@@ -8,7 +8,7 @@ patientApp:
     repository: gewa11281/patient-app
     tag: latest
     pullPolicy: Always
-  replicas: 2
+  replicas: 3
   port: 3000
   service:
     type: LoadBalancer
@@ -22,7 +22,7 @@ authService:
     repository: gewa11281/auth-service
     tag: latest
     pullPolicy: Always
-  replicas: 2
+  replicas: 3
   port: 4000
   service:
     type: ClusterIP
