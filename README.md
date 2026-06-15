@@ -505,3 +505,35 @@ eksctl delete cluster \
 
 ### ArgoCD - Deployment Tree
 ![ArgoCD Tree](screenshots/Screenshot%202026-06-14%20155757.png)
+
+## 📸 Screenshots
+
+### 📊 pgAdmin Database
+![pgAdmin](screenshots/Screenshot%202026-06-13%20232522%20-%20Copy.png)
+![pgAdmin Tables](screenshots/Screenshot%202026-06-13%20232522.png)
+![pgAdmin Data](screenshots/Screenshot%202026-06-14%20002018%20-%20Copy.png)
+![pgAdmin Records](screenshots/Screenshot%202026-06-14%20002018.png)
+![pgAdmin Connected](screenshots/Screenshot%202026-06-14%20002539.png)
+![pgAdmin Query](screenshots/Screenshot%202026-06-14%20003309.png)
+
+### 🐳 Docker Desktop
+![Docker Desktop](screenshots/Screenshot%202026-06-14%20115847.png)
+![Docker Compose](screenshots/Screenshot%202026-06-14%20120516.png)
+![Docker Running](screenshots/Screenshot%202026-06-14%20120709.png)
+![Docker Containers](screenshots/Screenshot%202026-06-14%20120736.png)
+![Docker Local](screenshots/Screenshot%202026-06-14%20120951.png)
+
+### 👤 Role Based Access Control
+![Nurse View](screenshots/Screenshot%202026-06-14%20144918.png)
+![Admin View](screenshots/Screenshot%202026-06-14%20145211.png)
+
+### 🏥 Patient Dashboard
+![Login](screenshots/Screenshot%202026-06-14%20155232.png)
+![Dashboard](screenshots/Screenshot%202026-06-14%20155400.png)
+![Patient Records](screenshots/Screenshot%202026-06-14%20155513.png)
+![Patient Details](screenshots/Screenshot%202026-06-14%20155544.png)
+
+### 🔄 ArgoCD GitOps
+![ArgoCD Login](screenshots/Screenshot%202026-06-14%20155757.png)
+![ArgoCD Dashboard](screenshots/Screenshot%202026-06-14%20155855.png)
+![ArgoCD Synced](screenshots/Screenshot%202026-06-14%20160011.png)
