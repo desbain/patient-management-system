@@ -490,52 +490,52 @@ eksctl delete cluster \
 \`\`\`
 
 
+
 ## 📸 Screenshots
 
 ### 🔐 Login Page
-![Login](screenshots/login-page.png)
+![Login](screenshots/Loginpage.png)
 
 ### 🏥 Patient Dashboard
-![Dashboard](screenshots/patient-dashboard.png)
+![Dashboard](screenshots/dashboard.png)
 
-### 👥 Patient Records - Admin
-![Admin Records](screenshots/patient-records-admin.png)
+### 👥 Patient Records
+![Patient Records](screenshots/Patient-records.png)
+![Patient Records 1](screenshots/patient-records-1.png)
+![Patient Records 2](screenshots/patient-records2.png)
 
-### 👤 Patient Records - Nurse
-![Nurse Records](screenshots/patient-records-nurse.png)
+### ➕ Patient Added Record
+![Added Record](screenshots/Patient-management-addedrecord.png)
 
-### 🐳 Docker Desktop
-![Docker Desktop](screenshots/docker-desktop.png)
+### 📋 Patient Management Records
+![Management Records](screenshots/patient-management-records.png)
 
-### 🐳 Docker Compose Running
-![Docker Compose](screenshots/docker-compose-run.png)
+### 👤 Role Based Access Control - Admin
+![RBAC Admin](screenshots/RBac-sysdamin.png)
 
-### 🐳 Docker Containers
-![Docker Containers 1](screenshots/docker-containers-1.png)
-![Docker Containers 2](screenshots/docker-containers-2.png)
+### 🐳 Docker Desktop Containers
+![Docker Desktop](screenshots/docker-desktop-containers.png)
 
-### 🌐 App Running Locally
-![Local App](screenshots/docker-local-app.png)
+### 📊 pgAdmin Database
+![pgAdmin](screenshots/pgadmin-database.png)
 
-### 👤 RBAC Nurse View
-![Nurse View](screenshots/rbac-nurse-view.png)
+### 🔄 ArgoCD - Empty Dashboard
+![ArgoCD Blank](screenshots/ArgoCDGitopsblank.png)
 
-### 👤 RBAC Admin View
-![Admin View](screenshots/rbac-admin-view.png)
+### 🔄 ArgoCD - Default View
+![ArgoCD Default](screenshots/ArgoCDGitopsdefault.png)
 
-### 📊 pgAdmin
-![pgAdmin Dashboard](screenshots/pgadmin-dashboard.png)
-![pgAdmin Tables](screenshots/pgadmin-tables.png)
-![pgAdmin Connected](screenshots/pgadmin-connected.png)
-![pgAdmin Records](screenshots/pgadmin-records.png)
-![pgAdmin Register](screenshots/pgadmin-register.png)
-![pgAdmin Setup](screenshots/pgadmin-setup.png)
+### 🔄 ArgoCD - Application Created
+![ArgoCD App](screenshots/ArgoCDGitops.png)
 
-### 🔄 ArgoCD Login
-![ArgoCD Login](screenshots/argocd-login.png)
+### 🔄 ArgoCD - GitOps Synced
+![ArgoCD Synced](screenshots/ArgoCDGitops1.png)
+
+### 🔄 ArgoCD - Deployment Tree
+![ArgoCD Tree](screenshots/ArgoCdGitOps2.png)
 
 ### 🔄 ArgoCD Dashboard
 ![ArgoCD Dashboard](screenshots/argocd-dashboard.png)
 
-### 🔄 ArgoCD Deployment Tree
-![ArgoCD Tree](screenshots/argocd-tree.png)
+### 🔄 ArgoCD Full Tree View
+![ArgoCD Full Tree](screenshots/argocd-tree.png)
